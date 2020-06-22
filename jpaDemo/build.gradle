@@ -1,0 +1,39 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.7.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	/*compileOnly : Gradle이 컴파일 클래스 경로에만 종속성을 추가*/
+	compileOnly 'org.projectlombok:lombok'
+	/*runtimeOnly : Gradle이 런타임 시에 사용하도록 빌드 출력에만 종속성 추가 */
+	runtimeOnly 'com.h2database:h2'
+	/*annotationProcessor : 컴파일 클래스 경로를 주석 프로세서 클래스 경로와 분리하여 빌드 성능을 향상*/
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	  testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+test {
+	useJUnitPlatform()
+}
