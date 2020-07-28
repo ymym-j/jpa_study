@@ -36,7 +36,7 @@ class MemberServiceTest {
 	}
 	
 	@Test
-	public void create2() {
+	public void createCase2() {
 		Member member = new Member();
 		
 		member.setUserName("TeamA_002");
