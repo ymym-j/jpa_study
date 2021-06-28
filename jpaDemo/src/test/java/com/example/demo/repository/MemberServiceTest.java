@@ -42,6 +42,7 @@ class MemberServiceTest {
 		member.setUserName("TeamA_002");
 		member.setTeam(teamRepository.getOne((long) 1));
 		memberService.create(member);
+
 	}
 	
     @Test
